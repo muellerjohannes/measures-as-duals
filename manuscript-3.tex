@@ -171,7 +171,7 @@ The class of integrands is fairly small and it is well known from measure and in
 %\end{enumerate}
 
 \section*{Measures as dual spaces}%\todo{write a few lines}
-
+Now we have set up all the preliminaries that we need to perceive \(ba(\mathcal A)\) as a dual space.
 
 %Let \(X\) be an arbitrary set and \(\mathcal A\subseteq\mathcal P(X)\) be a \(\sigma\)-algebra. Further let \(L^0_b(\mathcal A)\) be the space of real measurable and bounded functions on \(X\) which is a Banach space with respect to the uniform norm. The completeness follows as the measurable bounded functions are closed in the larger Banach space of bounded functions as they are even closed under pointwise convergence, or more precisely the product topology.
 
@@ -216,7 +216,7 @@ The class of integrands is fairly small and it is well known from measure and in
 
 %The above proposition holds completely analogue also for general dual elements.
 
-\begin{theo}\label{charact}
+\begin{theo}[Measures as a dual space]\label{charact}
 With the above notations the linear mapping
 \begin{equation*}
 I\colon ba(\mathcal A) \to L^0_b(\mathcal A)^\prime, \quad \mu\mapsto I\mu \coloneqq%F_\mu\coloneqq
@@ -308,7 +308,7 @@ completes the proof.
 
 The interpretation of measures as the dual space of bounded measurable functions can be used to show that the dual space of \(L^\infty(\mu)\) coincides with the absolutely continuous measures wrt \(\mu\). In the case of signed measures a measurable set \(A\in\mathcal A\) is called a \(\mu\) \emph{Null set} if \(\mu_+(A) + \mu_-(A) = 0\). A measure \(\nu\in ba(\mathcal A)\) is said to be \emph{absolutely continuous} wrt \(\mu\) if every \(\mu\) Null set is also a  \(\nu\) Null set. Further we write \(L^\infty(\mu)\) for the space of all measurable function that are bounded outside of a \(\mu\) Null set which is a Banach space wrt to the usual \(L^\infty(\mu)\) norm.
 
-\begin{theo}
+\begin{theo}[Dual of \(L^\infty(\mu)\)]
 Let \(\mu\in ba(\mathcal A)\) and let \( ba(\mu)\subseteq ba(\mathcal A)\) be the subspace of measure that are absolutely continuous wrt \(\mu\). Then we have 
 \[ ba(\mu) \cong L^\infty(\mu)^\prime \]
 isometrically in the canonical way.
@@ -362,7 +362,7 @@ To prove this statement, we will need the following ingredrients.
 Assuming we have all those statements, then we can conclude as follows. If \(X\) is compact, then \(\mathcal C_b(X)\) is seperable and thus the weak-\(\ast\) topology on \(\mathcal C_b(X)^\ast\) is metrisable. In this case also the relative topology, i.e. the weak topology on the probability measures is metrisable. If on the other hand the weak topology is metrisable, then we know because of (\emph{i}) that the probability measures are sequentially compact. In particular the family of Dirac measures \(\left\{ \delta_x\right\}_{x\in X}\) is tight and thus there is a compact set \(K\subseteq X\) such that
 \[\delta_x(K)>\frac12, \quad \text{i.e. } x\in K.\]
 Hence we obtain that \(X=K\) is compact. 
-Since (\emph{ii}) is well established in the literature (c.f. Prokhorov’s theorem or Theorem 5.2 in \cite{billingsley2013convergence}) and (\emph{iii}) follows from the Stone-Weierstrass theorem, we will focus on the proof of (\emph{i}).
+Since (\emph{ii}) is well established in the literature (c.f. Prokhorov’s theorem or Theorem 5.2 in \cite{billingsley2013convergence}) and (\emph{iii}) follows from the Stone-Weierstrass theorem (c.f. \cite{rudin1991functional}), we will focus on the proof of (\emph{i}).
 
 In order to do this, we remind the readers that haven’t been in touch with probability theory that a measure is called \emph{probability measure} if it is countably additive, positive and normed, i.e. gives measure \(1\) to the whole space. Thus the family of probability measures naturally is a subset of the space \(ba(\mathcal A)\) and is given by
 \begin{equation}\label{e3}
@@ -416,4 +416,9 @@ The assumption of the previous Corollary can be weakened. For example it is enou
 \end{rem}
 
 \section*{Conclusion}
+We have seen that the Hahn-Jordan decomposition also holds for only finitely additive signed measures. To the authors knowledge there is no reference so far for this in the literature. Further we developed a duality between a function space and the Banach space of signed measures and proved that countable additivity is equivalent to the dominated or monotone convergence theorem. This duality provides an extremely short and self contained introduction to signed measures that avoids the mostly tedious calculation that are usually involved in the proof of the norm property of the total variation and the completeness of the space of signed measures. 
 
+In the last section it was shown that the set of probability measures are compact with respect to the weak topology. Further the motivating question was answered, namely it was the goal to investigate whether the Prokhorov metric metrises the weak topology like frequently stated or only the weak convergence (c.f. \cite{billingsley2013convergence}).% but frequently stated that it would metrise the weak topology itself.
+% the question that was the motivation of this work was answered. Namely we wanted  It is well known that the Prokhorov metric metrises the weak convergence (c.f. \cite{billingsley2013convergence}) but frequently stated that it would metrise the weak topology itself.
+% This implies that the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact. This answers the question which %was the motivation of the presented work whether the weak topology or only the weak convergence is metrised by the Prokhorov metric (c.f. \cite{billingsley2013convergence}).
+In fact the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact and thus only the weak convergence is metrised. However this is no contradiction but shows that the weak topology has no countable neighborhood basis and is therefore not uniquely specified by its notion of convergence\todo{cite}.
