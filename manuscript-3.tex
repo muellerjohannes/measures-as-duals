@@ -1,0 +1,419 @@
+%\section{Characterisation of some dual spaces}
+
+%\section*{Measures as dual spaces}
+%\begin{emp}[Setting and notation]
+Let \(X\) be an arbitrary set and \(\mathcal A\subseteq\mathcal P(X)\) be a \(\sigma\)-algebra. Further let \(L^0_b(\mathcal A)\) be the space of real measurable and bounded functions on \(X\) which is a Banach space with respect to the uniform norm \(\left\lVert \cdot \right\rVert_\infty\). 
+%\end{emp}
+The completeness of \(L^0_b(\mathcal A)\) follows from the fact that the measurable bounded functions are closed in the larger Banach space of bounded functions as they are even closed under pointwise convergence, or more precisely the product topology. We will see that the finitely additive measures on \(\mathcal A\) are just the dual space of \(L^0_b(\mathcal A)\), but 
+%We denote the bounded and finitely additive signed measure on \(\mathcal A\) by \(ba(\mathcal A)\), and let further \(ca(\mathcal A)\) be the closed subspace of countably additive signed measures (\(ba\) stands for bounded additive and \(ca\) for countable additive). 
+%We will see that every measure in \(ba(\mathcal A)\) induces an integral for bounded measurable functions on \(X\) and therefore a linear functional on \(L^0_b(\mathcal A)\) which is continuous under uniform convergence and therefore a dual element. Conversely every element in \(L^0_b(\mathcal A)^\prime\) can be uniquely represented by a signed measure. % , which is precisely phrased in the following result.
+%But 
+before we can prove this we need a few basic properties of signed measures.
+
+
+%\section*{Signed measures}
+
+\begin{defi}[Signed measure]
+Let \((X, \mathcal A)\) be a measurable space and let \(\mu\colon\mathcal A\to\mathbb R\). Then we say \(\mu\) is
+\begin{enumerate}
+\item \emph{finitely additive} if we have \[\mu\Big(\bigcup_{k=1}^N A_k\Big) = \sum\limits_{k=1}^N\mu(A_k)\] for all finite collection of measurable disjoint sets \(A_k\in\mathcal A\),
+\item \emph{countably additive} if the above holds for countable collections of measurable disjoint sets,
+\item of \emph{bounded variation} or shortly \emph{bounded} if we have
+\[\left\lVert \mu \right\rVert_{BV}\coloneqq \sup_{\mathcal E}\sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert<\infty \]
+where the supremum is taken over all finite families of disjoint measurable sets,
+\item \emph{positive} if \(\mu(\mathcal A)\subseteq\mathbb R_+\).
+\end{enumerate}
+Further we denote the space of bounded and finitely additive measures %with bounded variation 
+by \(ba(\mathcal A)\) and the space of bounded and countably additive measures by \(ca(\mathcal A)\). The quantity \(\left\lVert \mu \right\rVert_{BV}\) is called the norm of \emph{total variation} of \(\mu\) and Theorem \ref{charact} shows that it is indeed a norm and that both \(ba(\mathcal A)\) and \(ca(\mathcal A)\) are complete wrt to it.
+\end{defi}
+
+\begin{theo}[Hahn-Jordan decomposition]
+For every signed measure \(\mu\in ba(\mathcal A)\) there are two positive measures \(\mu_+, \mu_-\in ba(\mathcal A)\) such that \(\mu = \mu_+-\mu_-\). Further \(\mu\) is countably additive if and only if \(\mu_+\) and \(\mu_-\) are countably additive.
+\end{theo}
+\begin{proof}
+For \(A\in\mathcal A\) set
+\[\mu_+(A)\coloneqq \sup\left\{ \mu(B)\mid B\in\mathcal A, B\subseteq A\right\}.\]
+It is clear that \(\mu_+\) is positive as we have \(\mu_+(A)\ge \mu(\varnothing)=0\). To see that \(\mu_+\) is finitely additive let \(A\) and \(B\) be disjoint measurable sets. Then we have
+\begin{equation*}
+\begin{split}
+\mu_+(A\cup B) & = \sup\left\{ \mu(C)\mid C\in\mathcal A, C\subseteq A\cup B\right\} \\
+ & = \sup\left\{ \mu(C\cap A) + \mu(C\cap B)\mid C\in\mathcal A, C\subseteq A\cup B\right\} \\
+ & = \sup\left\{ \mu(C) + \mu(D)\mid C, D\in\mathcal A, C\subseteq A, D\subseteq B\right\} \\
+ & = \sup\left\{ \mu(C)\mid C\in\mathcal A, C\subseteq A\right\} + \sup\left\{ \mu(D)\mid D\in\mathcal A, D\subseteq B\right\} \\
+ & = \mu_+(A) + \mu_+(B).
+\end{split}
+\end{equation*}
+%On the other hand we can choose \(C\subseteq A\) and \(D\subseteq B\) such that 
+%\[\mu(C)\ge \mu_+(A) - \varepsilon \quad \text{and } \mu(D)\ge \mu_+(B) - \varepsilon.\]
+%This yields
+%\[\mu_+(A\cup B) \ge \mu(C\cup D) \ge \mu_+(A) + \mu_+(B) - 2\varepsilon\]
+%and as this holds for all \(\varepsilon>0\) we attain the other inequality.
+If we choose \(\mu_-\coloneqq \mu_+-\mu\) we get the desired decomposition. Note that \(\mu_-\) is positive since we have \(\mu\le \mu_+\) via definition.
+
+It is obvious that if \(\mu_+\) and \(\mu_-\) are countably additive so is \(\mu\). Let on the other hand \(\mu\) be countably additive then it suffices to show that \(\mu_+\) is countably additive so let \((A_n)\subseteq\mathcal A\) be a sequence of disjoint sets. Choose now \(N\) so large that
+\[\sum_{i = N+1}^\infty \mu_+(A_i) < \varepsilon. \]
+To see that such \(N\) exists, take sequences \((B^{i}_n)_n\subseteq \mathcal A\) such that \(B_n^{i}\subseteq A_i\) and \(0\le\mu(B^{i}_n)\nearrow \mu_+(A_i)\). We get now %Note that such an \(N\) exists since we have
+\[\left\lVert \mu \right\rVert_{BV} \ge \sum\limits_{i=1}^\infty \mu(B^{i}_n) \nearrow \sum\limits_{i=1}^\infty \mu_+(A_i) \quad \text{for }n\to\infty\]
+by monotone convergence. Let \(\varepsilon>0\) and choose \(B\subseteq A\coloneqq\bigcup_{i=1}^\infty A_i\) such that
+\[\mu(B)\ge \mu_+(A) - \varepsilon. \]
+With \(A^N\coloneqq \bigcup_{i=1}^N A_i\) we get
+\[\mu_+(A^N) \ge \mu(B\cap A^N ) = \mu(B) - \mu\big(B\cap (A\setminus A^N)\big) \ge \mu_+(A) - 2\varepsilon \]
+since we can estimate 
+\[ \mu\big(B\cap (A\setminus A^N)\big) = \sum_{i=N+1}^\infty \mu(B\cap A_i) \le \sum_{i=N+1}^\infty \mu_+(A_i) < \varepsilon. \]
+Since \(\varepsilon>0\) was arbitrary we get
+\[\sum\limits_{i=1}^N \mu_+(A_i) = \mu_+(A^N) \to \mu_+(A) \quad \text{for } N\to\infty.\]
+\end{proof}
+
+
+
+%\begin{rem}
+%In the above definition we require the measures to be bounded to obtain a vector space structure. If for instance we had \(\mu(A) = \infty, \nu(A) = -\infty\) for a measurable set \(A\in\mathcal A\), the expression \(\mu+\nu\) would not be well defined.
+%\end{rem}
+
+
+%\section*{The Hahn-Jordan decomposition}
+
+%\begin{theo}[Hahn-Jordan decomposition]
+%Let \(\mu\) be a finitely additive signed measure on \(\mathcal A\).
+%\begin{enumerate}
+%\item There is a up to null sets unique set \(A_+\) such that 
+%\begin{equation*}
+%\begin{split}
+%0&\le \mu(A) \le \mu(A_+) \quad \text{for all } A\in\mathcal A \\
+%0&\ge \mu(A) \ge \mu(A_-) \quad \text{for all } A\in\mathcal A
+%\end{split}
+%\end{equation*}
+%where \(A_-\coloneqq A_+^c\).
+%\item We have the unique decomposition
+%\[\mu(\cdot) = \mu(A_+\cap \cdot)  - \mu(A_-\cap \cdot) \eqqcolon \mu_+(\cdot) - \mu_-(\cdot)\]
+%of \(\mu\) into two positive finitely additive measures \(\mu_+\) and \(\mu_-\).
+%\item Define the total variation \(\left\lvert \mu \right\rvert\) of \(\mu\) via
+%\[\left\lvert \mu \right\rvert(A)\coloneqq \mu_+(A) + \mu_-(A)\]
+%and define the \emph{norm of total variation} (short \emph{TV}) via \(\left\lVert \mu \right\rVert_{ba(\mathcal A)}\coloneqq \left\lvert \mu \right\rvert(X)\).
+%\end{enumerate}
+% there is a unique decomposition
+%\[\mu = \mu_+ - \mu_-\]
+%into two positive finitely additive measures such that \(\mu_+\perp \mu_-\), i.e. there exist some disjoint sets \(A, B\in\mathcal A\) such that \(\mu_+(B^c) = \mu_-(A^c) = 0\).
+%\end{theo}
+%\begin{proof}
+%•
+%\end{proof}•
+
+%\begin{rem}
+%Theorem \ref{charact} shows that the norm of total variation is indeed a norm.
+%\end{rem}
+
+%\textbf{Question:} Does this really hold for only finitely additive measures?
+
+\section*{Integration with respect to a %finitely additive 
+signed measure}
+
+%The construction of the integral of a bounded measurable function wrt a signed measure consists of the following steps:
+%We will define the integral of a bounded measurable function wrt a signed measure in the following steps:
+%\begin{enumerate}
+%\item We will define the integral of a non negative measurable function wrt a positive measure.
+%\item In the second step we define the integral of a bounded measurable function \(f\) wrt a positive measure via the decomposition \(f = f_+-f_-\) where \(f_+\) and \(f_-\) are non negative.
+%\item And finally we can define the integral of a bounded measurable function wrt to a signed measure \(\mu = \mu_+-\mu_-\) via the Hahn-Jordan decomposition and set
+%\[\int f\mathrm{d}\mu = \int f\mathrm{d}\mu_+ - \int f\mathrm{d}\mu_-. \]
+%\end{enumerate}
+
+%Actually we will assume that step \((i)\) and \((ii)\) is well known from the lectures on measure and integration theory. So we can simply elevate \((iii)\) to the definition of the integral of a bounded measurable function wrt to a signed measure. By the construction of this notion of integral we can directly deduce the following important properties:
+%\begin{enumerate}
+%\item The integration wrt a signed measure is linear.
+%\item The integration wrt a signed measure fulfills the monotone and the dominated convergence theorem.
+%\end{enumerate}•
+
+%With the absolutely analogue steps we obtain a notion of integral wrt to a finitely additive signed measure. %To convince ourselves that this strategy works we will quickly present the key points.
+
+%\textbf{Question:} Is this notion of integral still linear?%?? Yes \(\rightarrow\) 
+
+The integral of a \emph{simple function} with respect to a finitely additive measure is defined in the familiar way
+\[\int\limits \sum\limits_{k=1}^N \alpha_i\chi_{A_i} \mathrm{d}\mu \coloneqq \sum\limits_{k=1}^N \alpha_i \mu(A_i). \]
+It is easily seen that this definition does not depend on the representation as a finite sum. Note that the space of simple functions 
+\[\mathcal E = \left\{ \sum\limits_{k=1}^N \alpha_i\chi_{A_i} \;\Big\lvert\; \alpha_i\in\mathbb R, A_i\in\mathcal A, N\in\mathbb N \right\}\]
+is a dense subspace of \(L^0_b(\mathcal A)\) with respect to the uniform norm. Given \(f\in L^0_b(\mathcal A)\) an approximating sequence would be given by
+\[f_n = \sum\limits_{k = -2^n}^{2^n+1} k\left\lVert f \right\rVert2^{-n}\chi_{A_k} %+ \left\lVert f \right\rVert \chi_{f^{-1}(\left\{ \left\lVert f \right\rVert\right\})} 
+\quad \text{with } A_k = f^{-1}\big([k\left\lVert f \right\rVert2^{-n}, (k+1)\left\lVert f \right\rVert2^{-n})\big). \]
+If we write \(f = \sum \alpha_i\chi_{A_i}\in\mathcal E\) such that the sets \(A_i\) are pairwise disjoint we get
+% the triangle inequality we see that the integral 
+%\[\int \colon \mathcal E\to \mathbb R\]
+\begin{equation}\label{e1}
+\left\lvert \int f\mathrm{d}\mu \right\rvert \le \sum\limits_{k=1}^N \left\lvert \alpha_i \right\rvert \cdot \left\lvert \mu(A_i) \right\rvert \le  \max_i \left\lvert \alpha_i \right\rvert \cdot \sum\limits_{k=1}^N \left\lvert \mu (A_i)\right\rvert \le \left\lVert f \right\rVert_{\infty} \cdot \left\lVert \mu \right\rVert_{BV}.
+\end{equation}
+Therefore \(\int\mathrm d\mu\colon \mathcal E\to\mathbb R\) is a bounded linear operator and can uniquely be extended to a bounded linear operator on the whole space \(L^0_b(\mathcal A)\) which we will denote again by \(\int\mathrm d\mu\) in abusive notation. Further the inequality \eqref{e1} carries over to all functions \(f\in L^0_b(\mathcal A)\), so we have proven the following result.
+
+\begin{theo}[Integral]\label{integral}
+For every signed measure \(\mu\in ba(\mathcal A)\) there is a unique linear and continuous mapping
+\[\int\mathrm d\mu\colon L^0_b(\mathcal A)\to R\]
+called the \emph{integral wrt to \(\mu\)} such that we have 
+\[\int\limits \sum\limits_{k=1}^N \alpha_i\chi_{A_i} \mathrm{d}\mu \coloneqq \sum\limits_{k=1}^N \alpha_i \mu(A_i) \]
+for all simple functions. Further the estimate \eqref{e1} holds for all \(f\in L^0_b(\mathcal A)\). % or in other words we have \(\left\lVert \int\mathrm d\mu \right\rVert_{L^0_b(\mathcal A)^\prime} \le \left\lVert \mu \right\rVert_{BV} \).
+\end{theo}
+
+\begin{rem}
+From the definition of the integral we immediately get
+\[\int \mathrm{d}\mu = \int\mathrm{d}\mu_+ - \int\mathrm{d}\mu_-\]
+for simple functions and this decomposition carries over to the general integral. Considering this identity, we see immediately that all the nice properties of the Lebesgue integral like the monotone and dominated convergence theorem carry over to the integral with respect to a signed countably additive measure.
+\end{rem}
+
+\begin{rem}
+The class of integrands is fairly small and it is well known from measure and integration theory that for countably additive (signed) measures the notion of integral can be extended to a much wider class of functions. However one needs the monotone convergence theorem (which only holds for countably additive measures) to show that this more general Lebesgue integral is linear.
+\end{rem}
+
+%By the construction of this notion of integral we can deduce a few important 
+
+%\subsubsection*{Countably additive measures}
+
+%\begin{enumerate}
+%\item Hahn-Jordan decomposition
+%\item continuity of measures
+%\item monotone and dominated convergence 
+%\end{enumerate}
+
+\section*{Measures as dual spaces}%\todo{write a few lines}
+
+
+%Let \(X\) be an arbitrary set and \(\mathcal A\subseteq\mathcal P(X)\) be a \(\sigma\)-algebra. Further let \(L^0_b(\mathcal A)\) be the space of real measurable and bounded functions on \(X\) which is a Banach space with respect to the uniform norm. The completeness follows as the measurable bounded functions are closed in the larger Banach space of bounded functions as they are even closed under pointwise convergence, or more precisely the product topology.
+
+%We denote the bounded and finitely additive signed measure on \(\mathcal A\) by \(ba(\mathcal A)\), and let further \(ca(\mathcal A)\) be the closed subspace of countably additive signed measures (\(ba\) stands for bounded additive and \(ca\) for countable additive). 
+%Every measure in \(ba(\mathcal A)\) induces an integral for bounded measurable functions on \(X\) and therefore a linear functional on \(L^0_b(\mathcal A)\) which is continuous under uniform convergence and therefore a dual element. Conversely every element in \(\big(L^0_b(\mathcal A)\big)^\ast\) can be uniquely represented by a signed measure, which is precisely phrased in the following result.
+
+%Results on measures we need:
+%\begin{enumerate}
+%\item Hahn-Jordan decomposition
+%\item BS property (including the norm!) of \(ba\) and \(ca\) (or can we prove it via \(ba(\mathcal A)\cong L^0_b(\mathcal A)^\prime\)?)
+%\item integration wrt to finitely additive signed measures and basic properties
+%\end{enumerate}•
+
+%We say that a dual element \(F\in L^0_b(\mathcal A)^\prime\) is \emph{positive} if \(F(f)\ge0\) for all \(f\ge0\) and denote the set of all those elements as \(L^0_b(\mathcal A)^\prime_+\). Further we write \(ba(\mathcal A)_+\) the set of positive measures.
+
+%\begin{prop}
+%For every positive function \(F\in \big(L^0_b(\mathcal A)\big)^\prime\), i.e. for every dual element \(F\) that maps positive functions to positive values, there is exactly one positive, finitely additive measure \(\mu\in ba(\mathcal A)\) such that \(I\mu = F\). Further \(I\mu\) is a positive dual element for every positive, finitely additive measure and 
+%The mapping
+%\[I\colon ba(\mathcal A)_+\to L^0_b(\mathcal A)^\prime_+, \quad \mu\mapsto I\mu\]
+%is a bijective isometry. Further the inverse \(I^{-1}\) is given by
+%\[F\mapsto \Big( A\mapsto F(\chi_A)\Big).\] For a measure \(\mu\in ba(\mathcal A)_+\) the following three statements are equivalent:
+%is countably additive if and only if one of the two following equivalent properties holds:
+%\begin{enumerate}
+%\item \(\mu\) is countably additive.
+%\item \(I\mu\) fulfills the monotone convergence theorem.
+%\item \(I\mu\) fulfills the dominated convergence theorem.
+%\end{enumerate}
+%\end{prop}
+%\begin{proof}
+%The previous theorem directly implies that \(I\) is a well defined linear contraction, i.e. \(\left\lVert I\mu \right\rVert\le \left\lVert \mu \right\rVert\). To see that the mapping is an isometry we take a finite collection \(\mathcal E\) of disjoint measurable sets. Then we get
+%\[\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\prime} \ge \int\limits \sum\limits_{E\in\mathcal E} \operatorname{sign}(\mu(E)) \chi_E\mathrm d\mu = \sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert. \]
+ %By choosing \(f\coloneqq \chi_{A_+} - \chi_{A_-}\), where \(A_+\) and \(A_-\) are the sets out of the Hahn-Jordan decomposition of \(\mu\) we get
+%\[\mu(f) = \mu(A_+) - \mu(A_-) = \left\lVert \mu \right\rVert\]
+%By taking the supremum over all those collections \(\mathcal E\) we get \(\left\lVert I\mu \right\rVert = \left\lVert \mu \right\rVert\). Further the bijectivity follows from the fact \(I\circ I^{-1} =\operatorname{id}_{L^0_b(\mathcal A)^\prime_+}, I^{-1}\circ I = \operatorname{id}_{ba(\mathcal A)_+}\).  % \(I\mu_F = F\) and \(\mu_\)
+
+%Let now \(\mu\) be countably additive, then we know, that (\emph{ii}) and (\emph{iii}) hold, so we only have to show that (\emph{ii}) and (\emph{iii}) both imply (\emph{i}).
+%If we assume that the monotone convergence theorem holds for \(I\mu\), we have
+%\[\mu\left( \bigcup_{n\in \mathbb N} A_n\right) = I\mu\left(\sum\limits_{n\in \mathbb N} \chi_{A_n}\right) = \sum\limits_{n\in\mathbb N} I\mu(\chi_{A_n}) = \sum\limits_{n\in\mathbb N} \mu(A_n) \]
+%for disjoint \((A_n)\subseteq \mathcal A\). Thus \(\mu\) is countably additive.
+%The implication (\emph{iii})\(\Rightarrow\)(\emph{i}) follows analogue.
+%\end{proof}
+
+%The above proposition holds completely analogue also for general dual elements.
+
+\begin{theo}\label{charact}
+With the above notations the linear mapping
+\begin{equation*}
+I\colon ba(\mathcal A) \to L^0_b(\mathcal A)^\prime, \quad \mu\mapsto I\mu \coloneqq%F_\mu\coloneqq
+ \left(f\mapsto\int f\mathrm{d}\mu\right)
+\end{equation*}
+is an algebraic isomorphism and we have \(\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\ast} = \left\lVert \mu \right\rVert_{BV}\). In particular \(\left\lVert \cdot \right\rVert_{BV}\) is a norm and \(ba(\mathcal A)\) is complete with respect to it.
+%isometric isomorphism.
+ Further the inverse \(I^{-1}\) is given by
+\[F\mapsto \Big( A\mapsto F(\chi_A)\Big).\]
+For a measure \(\mu\in ba(\mathcal A)\) the following three statements are equivalent:
+%is countably additive if and only if one of the two following equivalent properties holds:
+\begin{enumerate}
+\item \(\mu\) is countably additive.
+\item \(I\mu\) fulfills the monotone convergence theorem.
+\item \(I\mu\) fulfills the dominated convergence theorem.
+\end{enumerate}
+\end{theo}
+\begin{proof}
+The previous theorem directly implies that \(I\) is a well defined linear contraction, i.e. %It is clear that \(I\) is linear, bijective and well defined and %further the estimate \eqref{e1} yields %Further we have
+%\[\mu(f)\le \int \left\lvert f \right\rvert\mathrm{d}\!\left\lvert \mu \right\rvert \le \left\lVert f \right\rVert_{L^0_b(\mathcal A)} \left\lVert \mu \right\rVert_{ba(\mathcal A)}, \]
+%and therefore
+\(\left\lVert I\mu \right\rVert\le \left\lVert \mu \right\rVert\). To see that the mapping is an isometry we take a finite collection \(\mathcal E\) of disjoint measurable sets. Then we get
+\[\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\prime} \ge \int\limits \sum\limits_{E\in\mathcal E} \operatorname{sign}(\mu(E)) \chi_E\mathrm d\mu = \sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert. \]
+%By choosing \(f\coloneqq \chi_{A_+} - \chi_{A_-}\), where \(A_+\) and \(A_-\) are the sets out of the Hahn-Jordan decomposition of \(\mu\) we get
+%\[\mu(f) = \mu(A_+) - \mu(A_-) = \left\lVert \mu \right\rVert\]
+By taking the supremum over all those collections \(\mathcal E\) we get \(\left\lVert I\mu \right\rVert = \left\lVert \mu \right\rVert\). Further the bijectivity follows from the fact \(I\circ I^{-1} =\operatorname{id}_{L^0_b(\mathcal A)^\prime}, I^{-1}\circ I = \operatorname{id}_{ba(\mathcal A)}\).  % \(I\mu_F = F\) and \(\mu_\)
+
+Let now \(\mu\) be countably additive, then we know, that (\emph{ii}) and (\emph{iii}) hold, so we only have to show that (\emph{ii}) and (\emph{iii}) both imply (\emph{i}).
+If we assume that the monotone convergence theorem holds for \(I\mu\), we have
+\[\mu\left( \bigcup_{n\in \mathbb N} A_n\right) = I\mu\left(\sum\limits_{n\in \mathbb N} \chi_{A_n}\right) = \sum\limits_{n\in\mathbb N} I\mu(\chi_{A_n}) = \sum\limits_{n\in\mathbb N} \mu(A_n) \]
+for disjoint \((A_n)\subseteq \mathcal A\). Thus \(\mu\) is countably additive.
+The implication (\emph{iii})\(\Rightarrow\)(\emph{i}) follows analogue.
+%The only thing we have to proof is that an arbitrary 
+\end{proof}
+
+%\begin{lemma}[Decomposition of functionals]
+%Let \(F\in L^0_b(\mathcal A)^\prime\), then there exist two positive functionals \(F_+, F_-\in L^0_b(\mathcal A)^\prime\), i.e. \(F_+(f), F_-(f)\ge0\) for all \(f\ge0\), such that \(F = F_+-F_-\).
+%\end{lemma}
+%\begin{proof}
+%Set
+%\[V_+\coloneqq\operatorname{span}\left\{ f\in L^0_b(\mathcal A)\mid f\ge0, F(f)\ge0\right\}\]
+%and similarly 
+%\[V_-\coloneqq\operatorname{span}\left\{ f\in L^0_b(\mathcal A)\mid f\ge0, F(f)\le0\right\}.\]
+%First restrict \(F\) to \(V_+\) and then extend it via \(0\) (is this possible?! I don’t think so!) and name the functional \(F_+\). Similarly we define \(F_-\) and get
+%\[F = F_+-F_-\]
+%where \(F_+\) and \(F_-\) are positive via definition.
+%For \(f\ge0\) set
+%\[F_+(f)\coloneqq\sup\left\{ F(h)\mid 0\le h\le f\right\}.\]
+%To see that this definition is additive on the positive functions, take \(f, g\ge0\) and let \(h_1, h_2\) such that \(0\le h_1\le f, 0\le h_2\le g\) and
+%\[F(h_1)\ge F_+(f)-\varepsilon\quad\text{und } F(h_2) \ge F_+(g)-\varepsilon.\]
+%Then we have
+%\[F_+(f+g)\ge F(h_1+h_2) \ge F_+(f) + F_+(g)-2\varepsilon\to F_+(f) + F_+(g) \quad \text{for }\varepsilon\to0. \]
+%On the other hand take \(0\le h\le f+g\) and set
+%\[p\coloneqq (h-g)_+, \quad q\coloneqq h\wedge g,\]
+%then we have \(p\le f, q\le g\) and \(p+q=h\) and therefore
+%\[F_+(f) + F_+(g) \ge F(p) + F(q) = F(h) \]
+%and taking the supremum over \(h\) we get \(F_+(f+g) = F_+(f) + F_+(g)\). For \(f\ge0\) and \(\lambda\ge0\) we also have \(F_+(\lambda f)=\lambda F(f)\) and \(F_+(f)\ge0\) for all \(f\ge0\). Setting \(F_+(f)\coloneqq F_+(f_+) - F_+(f_-)\) for \(f\) we obtain a positive functional \(F_+\) on \(L^0_b(\mathcal A)\). Now \(F_+\) and \(F_-\coloneqq F-F_+\) is the dsired decomposition.
+%\end{proof}
+
+%\begin{theo}[Hahn-Jordan decomposition]
+%For every signed measure \(\mu\in ba(\mathcal A)\) there are two positive measures \(\mu_+, \mu_-\in ba(\mathcal A)\) such that \(\mu = \mu_+-\mu_-\).
+%\end{theo}
+%\begin{proof}
+%With the usage of the previous proposition we get
+%\[\mu(A) = I\mu(\chi_A) = (I\mu)_+(\chi_A) - (I\mu)_-(\chi_A) \eqqcolon \mu_+(A)-\mu_-(A) \quad \text{for all }A\in\mathcal A\]
+%which is the desired decomposition.
+%\end{proof}
+
+\begin{rem}
+From now on we will identify \(\mu\) and \(I\mu\) with each other and therefore we write \(\mu(f)\) for the integral of \(f\) wrt to \(\mu\) whenever this makes sense.
+\end{rem}
+
+\begin{cor}
+The space of countably additive signed measures is a Banach space with respect to the norm of total variation. % Further the subspace of all countably additive measures is closed.
+\end{cor}
+\begin{proof}
+%The first statement is obvious as \(ba(\mathcal A)\) is isometric to the dual space \(L^0_b(\mathcal A)^\prime\) and therefore a complete normed space. % Note that the norm properties of \(\left\lVert \cdot \right\rVert_{BV}\) are also included in that statement. 
+Since \(ba(\mathcal A)\) is complete, we only have to prove that \(ca(\mathcal A)\) is closed. For this let \((\mu_n)\subseteq ca(\mathcal A)\) be a sequence with \(\mu_n\to\mu\). To see that \(\mu\) is again countably additive we only have to show that the dominated convergence theorem holds for \(\mu\). So let \((f_n)\subseteq L^0_b(\mathcal A)\) be a sequence of functions such that \(f_n\to f\) pointwise and \(\sup_n\left\lvert f_n \right\rvert \le K<\infty\). The computation
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\left\lvert \mu (f_n) - \mu(f) \right\rvert &\le \liminf_{n\to\infty}\left\lvert \mu(f_n) - \mu_N(f_n) \right\rvert + \left\lvert \mu_N(f_n) - \mu_N(f) \right\rvert \\
+&\qquad% \qquad\qquad\qquad\qquad\quad\;\;\,
++ \left\lvert \mu_N(f) - \mu(f) \right\rvert \\
+& \le 2 K \cdot\left\lVert \mu - \mu_N \right\rVert_{BV} \to 0 \quad \text{for } N\to \infty
+\end{split}
+\end{equation*}
+completes the proof.
+\end{proof}
+
+The interpretation of measures as the dual space of bounded measurable functions can be used to show that the dual space of \(L^\infty(\mu)\) coincides with the absolutely continuous measures wrt \(\mu\). In the case of signed measures a measurable set \(A\in\mathcal A\) is called a \(\mu\) \emph{Null set} if \(\mu_+(A) + \mu_-(A) = 0\). A measure \(\nu\in ba(\mathcal A)\) is said to be \emph{absolutely continuous} wrt \(\mu\) if every \(\mu\) Null set is also a  \(\nu\) Null set. Further we write \(L^\infty(\mu)\) for the space of all measurable function that are bounded outside of a \(\mu\) Null set which is a Banach space wrt to the usual \(L^\infty(\mu)\) norm.
+
+\begin{theo}
+Let \(\mu\in ba(\mathcal A)\) and let \( ba(\mu)\subseteq ba(\mathcal A)\) be the subspace of measure that are absolutely continuous wrt \(\mu\). Then we have 
+\[ ba(\mu) \cong L^\infty(\mu)^\prime \]
+isometrically in the canonical way.
+\end{theo}
+\begin{proof}
+Let \([f]_\mu\) denote the \(\mu\) ‚a.e. equivalence‘ class of \(f\in L^0_b(\mathcal A)\), then 
+\[\iota:L^0_b(\mathcal A) \to L^\infty(\mu), \quad f\mapsto[f]_\mu\]
+is surjective and further we have
+\begin{equation}\label{e3}
+\left\lVert [f]_\mu \right\rVert_{L^\infty(\mathcal A)} = \inf_{g\in [f]_\mu} \left\lVert g \right\rVert_\infty .
+\end{equation}
+Therefore the dual operator
+\[\iota^\prime\colon L^\infty(\mu)^\prime \to L^0_b(\mathcal A)^\prime \cong ba(\mathcal A)\]
+is injective and because of \eqref{e3} it is isometric since it implies \(\iota(B_1) = B_1\) where \(B_1\) denotes the unit ball in the respective spaces. %Indeed we have
+%\[\left\lvert \iota^\prime F(f) \right\rvert = \left\lvert F[f]_\mu \right\rvert \le \left\lVert F \right\rVert_{L^\infty(\mu)^\prime} \cdot \left\lVert [f]_\mu \right\rVert_{L^\infty(\mu)} \le \left\lVert F \right\rVert_{L^\infty(\mu)^\prime}\cdot\left\lVert f \right\rVert_\infty\]
+%and with Hahn Banach we get
+%\[\left\lVert F \right\rVert_{L^\infty(\mu)^\prime} = F[f]_{\mu} = \lim \iota^\prime Fg_n\]
+%with \((g_n)\subseteq [f]_\mu\) with \(\left\lVert g_n \right\rVert\to 1\).
+Further the closed range theorem implies
+\[\operatorname{ran}(\iota^\prime) = \operatorname{ker}(\iota)^\perp = \left\{ F\in L^0_b(\mathcal A)^\prime\mid F(f) = 0 \text{ for all } %f \text{ s.t. }
+ f = 0 \text{ \(\mu\) a.e.}\right\} \cong ba(\mu).\]
+\end{proof}
+
+\begin{emp}[Characterisation of other dual spaces]
+A similar approach can be used to characterise the dual spaces of other normed spaces of bounded measurable functions, for example the dual of all bounded continuous functions \(\mathcal C_b(X)\) if we are dealing with a topological space \(X\). If we denote the Borel algebra by \(\mathcal B\) we get
+\[\iota\colon\mathcal C_b(X) \hookrightarrow L^0_b(\mathcal B) \]
+isometrically and therefore 
+\[\iota^\prime\colon ba(\mathcal B) \cong L^0_b(\mathcal B) \to\!\!\!\!\!\to \mathcal C_b(X)^\prime, \quad \mu\mapsto \big( f\mapsto \mu(f)\big)\]
+is surjective, but not necessarily isometric and not injective if \(\mathcal C_b(X)\subsetneq L^0_b(\mathcal B)\). Of course one could argue that we then have \(\mathcal C_b(X)^\prime\cong ba(\mathcal B)/\operatorname{ker}(\iota^\prime)\) but that characterisation is very implicit.
+ However one can characterise that quotient space is some cases -- usually under certain regularity condition on the space -- as a 
+ %show in some cases -- if the topological space \(X\) is regular enough -- that the restriction of \(\iota^\prime\) to 
+ subspace of \(ba(\mathcal A)\). % is injective and also surjective but 
+Usually one also has to work with other spaces of bounded continuous functions like the continuous functions vanishing at infinity. Since those results are somewhat technical to prove (but not necessarily hard) they will not be presented here. \todo{elaborate and cite this!}% to reconstruct the measure \(\mu(A) = \mu(\chi_A)\) from the values \(\mu(f)\) for \(f\in\mathcal C_b(X)\).
+\end{emp}
+
+\section*{Weak topologies on the space of probability measures}
+
+In probability theory it is common to consider the \emph{weak topology} on the Borel probability measures \(\mathcal P(\mathcal A)\) over some topological space \(X\) with Borel algebra \(\mathcal A\), which is the initial topology of the evaluations
+\[f\mapsto \mu(f) = \int f\mathrm{d}\mu\quad \text{for } f\in\mathcal C_b( X).\]
+%We will now try to address the 
+Note that this corresponds exactly to the relative topology on the probability measures \(\mathcal P(\mathcal A)\subseteq \mathcal C_b(X)^\ast\)  of the weak-\(\ast\) topology, where \(\mathcal P(\mathcal A)\) is embedded canonically.
+If \(X\) is a complete metric space, then it is well known that the convergence that arrises from this topology, which is called the \emph{weak convergence}, can be metrised by the dual bounded Lipschitz metric or the Lévy-Prokhorov metric.
+%\[d_{L}(\mu,\nu) \coloneqq \sup \Big\{ \mu(f) - \nu(f) \mid f\in\mathcal C_b(X) \text{ is Lipschitz with constant at most } 1 \Big\}.  \]
+However this result is frequently stated as the fact that the weak topology is metrised with by this metric. Against the background of the metrisability results of the weak topologies in Banach spaces this seems very surprising and in fact it turns out to be false. More precisely the weak topology is metrisable if and only if the space \(X\) is compact, which is the case if and only if \(\mathcal C_b(X)\) is separable. This agrees with the metrisability of the weak-\(\ast\) topology.
+To prove this statement, we will need the following ingredrients.
+\begin{enumerate}
+\item The space of probability measures over a topological space is compact in the weak topology.
+\item If a famility \(\left\{ \mu_i\right\}_{i\in I}\) of probability measures is relatively sequentially compact in the weak topology, then it is \emph{tight}, i.e. for every \(\varepsilon>0\) there is a compact set \(K\subseteq X\) such that \(\mu_i(K)>1-\varepsilon\) for all \(i\in I\).
+\item If \(X\) is a compact metric space, then \(\mathcal C_b(X)\) is separable. Note that the converse statement is also true, but we will not need it here.% if and only if \(X\) is compact.
+\end{enumerate}
+Assuming we have all those statements, then we can conclude as follows. If \(X\) is compact, then \(\mathcal C_b(X)\) is seperable and thus the weak-\(\ast\) topology on \(\mathcal C_b(X)^\ast\) is metrisable. In this case also the relative topology, i.e. the weak topology on the probability measures is metrisable. If on the other hand the weak topology is metrisable, then we know because of (\emph{i}) that the probability measures are sequentially compact. In particular the family of Dirac measures \(\left\{ \delta_x\right\}_{x\in X}\) is tight and thus there is a compact set \(K\subseteq X\) such that
+\[\delta_x(K)>\frac12, \quad \text{i.e. } x\in K.\]
+Hence we obtain that \(X=K\) is compact. 
+Since (\emph{ii}) is well established in the literature (c.f. Prokhorov’s theorem or Theorem 5.2 in \cite{billingsley2013convergence}) and (\emph{iii}) follows from the Stone-Weierstrass theorem, we will focus on the proof of (\emph{i}).
+
+In order to do this, we remind the readers that haven’t been in touch with probability theory that a measure is called \emph{probability measure} if it is countably additive, positive and normed, i.e. gives measure \(1\) to the whole space. Thus the family of probability measures naturally is a subset of the space \(ba(\mathcal A)\) and is given by
+\begin{equation}\label{e3}
+\mathcal P(\mathcal A) = ca(\mathcal A)\cap \Big\{ \mu \mid \mu(\chi_A)\ge0 \text{ for all } A\in \mathcal A\Big\}\cap\big\{ \mu\mid \mu(\chi_X) = 1\big\}.
+\end{equation}
+Because of \(\mathcal P(\mathcal A)\subseteq ba(\mathcal A)\cong L^0_b(\mathcal A)^\ast\) it is natural to consider the topology on the probability measures that arises from the evaluations
+\[f\mapsto \mu(f) \quad \text{for } f\in L^0_b(\mathcal A). \]
+Since we have \(\mathcal C_b(X)\subseteq L^0_b(\mathcal A)\) this topology is finer than the weak topology and thus it suffices to prove compactness in this finer topology.
+
+Just like in the case of the weak topology we note that this topology is nothing but the restriction of the weak-\(\ast\) topology in \(ba(\mathcal A)\) onto \(\mathcal P(\mathcal A)\). Since probability measures satisfy \(\left\lvert \mu(f) \right\rvert\le \left\lVert f \right\rVert_\infty\), we see that \(\mathcal P(\mathcal A)\subseteq ba(\mathcal A)\) is bounded. In fact the choice \(f = \chi_X\) shows that the probability measures lie on the sphere. By the famous Banach-Alaoglu theorem the closed unit ball \(B\subseteq ba(\mathcal A)\) is compact with respect to the weak-\(\ast\) topology. Since we have \(\mathcal P(\mathcal A)\subseteq B\), we only have to show that \(\mathcal P(\mathcal A)\) is closed in the weak-\(\ast\) topology to obtain that the probability measures are compact with respect to the weak-\(\ast\) topology in \(ba(\mathcal A)\). To show this, we will use the representation \eqref{e3} and we note that
+\[\Big\{ \mu \mid \mu(\chi_A)\ge0 \text{ for all } A\in \mathcal A\Big\} = \bigcap_{A\in \mathcal A} \big\{ \mu\mid \mu(\chi_A)\ge0\big\} \]
+and also
+\[\big\{ \mu\mid \mu(\chi_X) = 1\big\}\]
+is closed in the weak-\(\ast\) topology since they are preimages (or intersections of those) of closed sets. Hence it remains to show that \(ca(\mathcal A)\subseteq ba(\mathcal A)\) is weak-\(\ast\) closed and thus we also seek a representation in terms of preimages of closed sets. Recall that \(\mu\) is countably additive if and only if for all disjoint unions \(A = \bigcup_{n\in\mathbb N}A_n\) we have
+\begin{equation}\label{e4}
+\mu(A) = \lim_{N\to\infty}\mu(A^N)
+\end{equation}
+where \(A^N\coloneqq\bigcup_{n=1}^NA_n\). If we fix such a disjoint union, then the measures that satisfy \eqref{e4} are exactly given by
+\begin{equation}\label{e5}
+\bigcap_{\varepsilon>0} \liminf_{N\to\infty}\Big\{ \left\lvert \mu(A) - \mu(A^N) \right\rvert\le\varepsilon\Big\}.
+\end{equation}
+We note that each of the sets in the intersection is closed in the weak-\(\ast\) topology, since
+\[\Big\{ \left\lvert \mu(A) - \mu(A^N) \right\rvert\le\varepsilon\Big\} = \Big\{ \mu(\chi_{A\setminus A^N}) \in [-\varepsilon,\varepsilon]\Big\}.\]
+We now note that \(ca(\mathcal A)\) is nothing but the intersection of \eqref{e5} over all disjoint unions and therefore closed in the weak-\(\ast\) topology. Hence we have proved the following results, where we note that we didn’t use the metric structure in the proofs of the first two statements.
+
+\begin{theo}[Weak-\(\ast\) closedness of \(ca(\mathcal A)\)]
+The subspace of countably additive measures \(ca(\mathcal A)\subseteq ba(\mathcal A)\cong L^0_b(X)^\ast\) is closed in the weak-\(\ast\) topology.
+\end{theo}
+
+\begin{cor}
+The set of probability measures \(\mathcal P(\mathcal A)\subseteq ba(\mathcal A)\cong L^0_b(\mathcal A)^\ast\) is bounded and closed in the weak-\(\ast\) topology and hence compact with respect to the the weak-\(\ast\) topology.
+\end{cor}
+
+\begin{cor}[Weak compactness of probability measures]
+Let \(X\) be a topological space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures. Then \(\mathcal P(\mathcal A)\) is compact with respect to the weak topology.
+\end{cor}
+
+\begin{cor}[Metrisability of the weak topology]
+Let \(X\) be a metric space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures.
+%be a topological space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures. Then the following statements hold.
+%\begin{enumerate}
+%\item If the weak topology is metrisable, then the space \(X\) is compact.
+%\item If the space \(\mathcal C_b(X)\) is separable, then the weak topology is metrisable.
+%\item If \(X\) is metric, 
+Then the weak topology is metrisable if and only if \(X\) is compact.
+%\end{enumerate}
+\end{cor}
+
+\begin{rem}
+The assumption of the previous Corollary can be weakened. For example it is enough to assume that \(X\) is a topological space in where two points can be separated by a continuous bounded function, i.e. if for \(x, y\in X\) there is \(f\in\mathcal C_b(X)\) such that \(f(x)\ne f(y)\). However in this case metrisability of the weak topology only implies sequential compactness of the space \(X\).
+\end{rem}
+
+\section*{Conclusion}
+

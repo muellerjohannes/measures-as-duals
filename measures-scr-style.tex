@@ -1,0 +1,141 @@
+\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[bottom=3.6cm,top=3.6cm]{geometry}%,right=3.5cm,left=3.5cm,top=3.5cm
+\usepackage[english]{babel}
+\usepackage[applemac]{inputenc}
+
+\usepackage{tgtermes}
+\usepackage[T1]{fontenc}
+\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{extarrows}
+\usepackage{esint}
+\usepackage{faktor}
+\usepackage{tikz-cd}
+\usepackage{commath}
+\usepackage{todonotes}
+
+\usepackage{enumitem}
+\usepackage[intoc]{nomencl}
+\usepackage{titlesec}%, blindtext, color}
+\usepackage{tocloft}
+
+\usepackage[pdftex,plainpages=false]{hyperref}
+
+%\addbibresource{dpps.bib}
+
+\titleformat{\section}{\Large\bf}{\thesection}{0pt}{}
+
+\title{\rm %Duality of measures and 
+Weak compactness of probability measures}% \\ is not metrisable}
+\author{Johannes MŸller}
+
+\newtheoremstyle{defstyle}
+{}              %Space above    
+{}              %Space below
+{}                      %Body font: original {\normalfont}    
+{}                      %Indent amount (empty = no indent,%\parindent = paraindent)    
+{\normalfont\bfseries}  %Thm head font original 
+{.}{10pt}      
+{{\scshape\bfseries \thmnumber{#2}\thmname{ #1}\thmnote{ (#3)}}}
+\newtheoremstyle{satzstyle}
+{}              %Space above    
+{}              %Space below
+{\itshape}                      %Body font: original {\normalfont}    
+{}                      %Indent amount (empty = no indent,%\parindent = paraindent)    
+{\normalfont\bfseries}  %Thm head font original 
+{.}{10pt}      
+{{\scshape\bfseries \thmnumber{#2} \thmname{ #1}\thmnote{ (#3)}}}
+\newtheoremstyle{emptystyle}
+{}              %Space above    
+{}              %Space below
+{}                      %Body font: original {\normalfont}    
+{}                      %Indent amount (empty = no indent,%\parindent = paraindent)    
+{\scshape\bfseries}  %Thm head font original 
+{.}{6pt}      
+{{\scshape\bfseries \thmnumber{#2}\thmnote{ #3}}}
+
+\theoremstyle{satzstyle}
+\newtheorem{satz}{Satz}[]
+\newtheorem{theo}[satz]{Theorem}
+\newtheorem{lem}[satz]{Lemma}
+\newtheorem{res}[satz]{Result}
+\newtheorem{kor}[satz]{Korollar}
+\newtheorem{cor}[satz]{Corollary}
+\newtheorem{folg}[satz]{Folgerung}
+\newtheorem{prop}[satz]{Proposition}
+\theoremstyle{defstyle}
+\newtheorem{defi}[satz]{Definition}
+\newtheorem{bem}[satz]{Bemerkung}
+\newtheorem{rem}[satz]{Remark}
+\newtheorem{bsp}[satz]{Beispiel}
+\newtheorem{ex}[satz]{Example}
+\theoremstyle{emptystyle}
+\newtheorem{emp}[satz]{}
+
+%\renewcommand{\baselinestretch}{1.18}
+
+\begin{document}
+
+\renewcommand*{\thesatz}{\arabic{satz}}
+\renewcommand*{\theequation}{\arabic{equation}}
+\renewcommand{\labelenumi}{\textup{(\textit{\roman{enumi}})}}
+\titleformat{\section}{\large\scshape\bfseries}{\thesection}{6pt}{}
+%\titleformat{\section}{\Large\bfseries}{\thesection}{10pt}{}
+%\titleformat{\subsection}{\Large\bfseries}{\thesubsection}{5pt}{}
+%\titleformat{\subsubsection}{\bfseries}{\thesubsection}{5pt}{}
+\renewcommand{\cfttoctitlefont}{\bfseries\Large}
+\deftripstyle{custom}{}{}{}{}{\textsc{\pagemark}}{}
+
+\pagenumbering{gobble}
+\maketitle
+
+% \vspace{2cm}
+% \begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{frontpage}
+%	\tag{1}
+%	\caption{Uncorrelated and negatively correlated and thus diverse point patterns}
+	%\label{fig:1}
+% \end{figure}
+%\tableofcontents
+
+ \begin{center}
+ \textsc{Abstract}\\[.4cm]
+
+\begin{minipage}{11cm}
+{\small We will investigate fundamental properties of finitely additive signed measures, like the Hahn-Jordan decomposition and the integration with respect to them. This notion of integral leads to a canonical representation of measures as a dual space, namely the dual of all bounded measurable functions. This approach has the advantage that it immediately gives the Banach space property of the signed measures with respect to the total variation.
+Further we will prove that the countably additive measures correspond exactly to the dual elements for which the desirable monotone and dominated convergence theorem hold. This characterisation naturally leads to the characterisation of dual spaces of other Banach spaces of bounded functions like spaces of continuous functions. Further we use the duality of the measures to show that
+%it can be used to investigate properties of the weak topology of probability measures and we will see that 
+the space of probability measures is compact in the weak topology. This implies that the weak topology on the probability measures over a metric space is in general not metrisable like frequently stated. Actually the metrisability turns out to be equvalent to the compactness of the space itself. % is only metrisable if the space is compact, a f
+}
+% Determinantal point processes are random subsets that exhibit a diversifying behaviour in the sense that the randomly selected points tend to be not similar in some way. This repellent structure first arrose in theortical physics and pure mathematics, but they have recently been used to % do not only arrise in  be used to 
+% model a variety of many real world scenarios %like 
+%\textbf{come up with good examples!}.  %This property is the reason why they arose in physics to model particles that reject each other. 
+% in a machine learning setup. We aim to give an overview over the main ideas of this approach which is easily accessible even without prior knowledge in the area of machine learning and sometimes omit technical calculations in order to keep the focus on the concepts.
+ 
+%  means that one wants to use the observations or knowledge of some observation to make statements about properties of some scenarios that are apriori unknown. We aim to give an overview about different approaches to this problem and focus on the description of the concepts rather than some delicate details.
+\end{minipage}
+\end{center}
+%\newgeometry{textwidth=10cm,textheight=10cm}
+%\small
+%blabla
+% \normalsize
+
+% \clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{custom}
+\input{manuscript-3}
+
+%\clearpage
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{main}
+
+\end{document}
