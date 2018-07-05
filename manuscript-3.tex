@@ -336,12 +336,12 @@ Further the closed range theorem implies
 A similar approach can be used to characterise the dual spaces of other normed spaces of bounded measurable functions, for example the dual of all bounded continuous functions \(\mathcal C_b(X)\) if we are dealing with a topological space \(X\). If we denote the Borel algebra by \(\mathcal B\) we get
 \[\iota\colon\mathcal C_b(X) \hookrightarrow L^0_b(\mathcal B) \]
 isometrically and therefore 
-\[\iota^\prime\colon ba(\mathcal B) \cong L^0_b(\mathcal B) \to\!\!\!\!\!\to \mathcal C_b(X)^\prime, \quad \mu\mapsto \big( f\mapsto \mu(f)\big)\]
-is surjective, but not necessarily isometric and not injective if \(\mathcal C_b(X)\subsetneq L^0_b(\mathcal B)\). Of course one could argue that we then have \(\mathcal C_b(X)^\prime\cong ba(\mathcal B)/\operatorname{ker}(\iota^\prime)\) but that characterisation is very implicit.
+\[\iota^\ast\colon ba(\mathcal B) \cong L^0_b(\mathcal B)^\ast \to\!\!\!\!\!\to \mathcal C_b(X)^\prime, \quad \mu\mapsto \big( f\mapsto \mu(f)\big)\]
+is surjective, but not necessarily isometric and not injective if \(\mathcal C_b(X)\subsetneq L^0_b(\mathcal B)\). Of course one could argue that we then have \(\mathcal C_b(X)^\ast\cong ba(\mathcal B)/\operatorname{ker}(\iota^\ast)\) but that characterisation is very implicit.
  However one can characterise that quotient space is some cases -- usually under certain regularity condition on the space -- as a 
  %show in some cases -- if the topological space \(X\) is regular enough -- that the restriction of \(\iota^\prime\) to 
- subspace of \(ba(\mathcal A)\). % is injective and also surjective but 
-Usually one also has to work with other spaces of bounded continuous functions like the continuous functions vanishing at infinity. Since those results are somewhat technical to prove (but not necessarily hard) they will not be presented here. \todo{elaborate and cite this!}% to reconstruct the measure \(\mu(A) = \mu(\chi_A)\) from the values \(\mu(f)\) for \(f\in\mathcal C_b(X)\).
+ subspace of \(ba(\mathcal A)\). For detail on this we refer to the chapter about positive functionals in \cite{rudin2006real}. % is injective and also surjective but 
+%Usually one also has to work with other spaces of bounded continuous functions like the continuous functions vanishing at infinity. Since those results are somewhat technical to prove (but not necessarily hard) they will not be presented here. \todo{elaborate and cite this!}% to reconstruct the measure \(\mu(A) = \mu(\chi_A)\) from the values \(\mu(f)\) for \(f\in\mathcal C_b(X)\).
 \end{emp}
 
 \section*{Weak topologies on the space of probability measures}
@@ -421,4 +421,4 @@ We have seen that the Hahn-Jordan decomposition also holds for only finitely add
 In the last section it was shown that the set of probability measures is compact with respect to the weak topology. Further the motivating question was answered, namely it was the goal to investigate whether the Prokhorov metric metrises the weak topology like frequently stated or only the weak convergence (c.f. \cite{billingsley2013convergence}).% but frequently stated that it would metrise the weak topology itself.
 % the question that was the motivation of this work was answered. Namely we wanted  It is well known that the Prokhorov metric metrises the weak convergence (c.f. \cite{billingsley2013convergence}) but frequently stated that it would metrise the weak topology itself.
 % This implies that the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact. This answers the question which %was the motivation of the presented work whether the weak topology or only the weak convergence is metrised by the Prokhorov metric (c.f. \cite{billingsley2013convergence}).
-In fact the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact and thus only the weak convergence is metrised. However this is no contradiction but shows that the weak topology has no countable neighborhood basis and is therefore not uniquely specified by its notion of convergence\todo{cite}.
+In fact the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact and thus only the weak convergence is metrised. However this is no contradiction but shows that the weak topology has no countable neighborhood basis and is therefore not uniquely specified by its notion of convergence (c.f. \cite{muller2018topology}).
