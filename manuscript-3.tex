@@ -220,7 +220,7 @@ Now we have set up all the preliminaries that we need to perceive \(ba(\mathcal 
 \begin{theo}[Measures as a dual space]\label{charact}
 With the above notations the linear mapping
 \begin{equation*}
-I\colon ba(\mathcal A) \to L^0_b(\mathcal A)^\prime, \quad \mu\mapsto I\mu \coloneqq%F_\mu\coloneqq
+I\colon ba(\mathcal A) \to L^0_b(\mathcal A)^\ast, \quad \mu\mapsto I\mu \coloneqq%F_\mu\coloneqq
  \left(f\mapsto\int f\mathrm{d}\mu\right)
 \end{equation*}
 is an algebraic isomorphism and we have \(\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\ast} = \left\lVert \mu \right\rVert_{BV}\). In particular \(\left\lVert \cdot \right\rVert_{BV}\) is a norm and \(ba(\mathcal A)\) is complete with respect to it.
@@ -240,10 +240,10 @@ The previous theorem directly implies that \(I\) is a well defined linear contra
 %\[\mu(f)\le \int \left\lvert f \right\rvert\mathrm{d}\!\left\lvert \mu \right\rvert \le \left\lVert f \right\rVert_{L^0_b(\mathcal A)} \left\lVert \mu \right\rVert_{ba(\mathcal A)}, \]
 %and therefore
 \(\left\lVert I\mu \right\rVert\le \left\lVert \mu \right\rVert\). To see that the mapping is an isometry we take a finite collection \(\mathcal E\) of disjoint measurable sets. Then we get
-\[\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\prime} \ge \int\limits \sum\limits_{E\in\mathcal E} \operatorname{sign}(\mu(E)) \chi_E\mathrm d\mu = \sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert. \]
+\[\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\ast} \ge \int\limits \sum\limits_{E\in\mathcal E} \operatorname{sign}(\mu(E)) \chi_E\mathrm d\mu = \sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert. \]
 %By choosing \(f\coloneqq \chi_{A_+} - \chi_{A_-}\), where \(A_+\) and \(A_-\) are the sets out of the Hahn-Jordan decomposition of \(\mu\) we get
 %\[\mu(f) = \mu(A_+) - \mu(A_-) = \left\lVert \mu \right\rVert\]
-By taking the supremum over all those collections \(\mathcal E\) we get \(\left\lVert I\mu \right\rVert = \left\lVert \mu \right\rVert\). Further the bijectivity follows from the fact \(I\circ I^{-1} =\operatorname{id}_{L^0_b(\mathcal A)^\prime}, I^{-1}\circ I = \operatorname{id}_{ba(\mathcal A)}\).  % \(I\mu_F = F\) and \(\mu_\)
+By taking the supremum over all those collections \(\mathcal E\) we get \(\left\lVert I\mu \right\rVert = \left\lVert \mu \right\rVert\). Further the bijectivity follows from the fact \(I\circ I^{-1} =\operatorname{id}_{L^0_b(\mathcal A)^\ast}, I^{-1}\circ I = \operatorname{id}_{ba(\mathcal A)}\).  % \(I\mu_F = F\) and \(\mu_\)
 
 Let now \(\mu\) be countably additive, then we know, that (\emph{ii}) and (\emph{iii}) hold, so we only have to show that (\emph{ii}) and (\emph{iii}) both imply (\emph{i}).
 If we assume that the monotone convergence theorem holds for \(I\mu\), we have
@@ -311,7 +311,7 @@ The interpretation of measures as the dual space of bounded measurable functions
 
 \begin{theo}[Dual of \(L^\infty(\mu)\)]
 Let \(\mu\in ba(\mathcal A)\) and let \( ba(\mu)\subseteq ba(\mathcal A)\) be the subspace of measure that are absolutely continuous wrt \(\mu\). Then we have 
-\[ ba(\mu) \cong L^\infty(\mu)^\prime \]
+\[ ba(\mu) \cong L^\infty(\mu)^\ast \]
 isometrically in the canonical way.
 \end{theo}
 \begin{proof}
@@ -322,14 +322,14 @@ is surjective and further we have
 \left\lVert [f]_\mu \right\rVert_{L^\infty(\mathcal A)} = \inf_{g\in [f]_\mu} \left\lVert g \right\rVert_\infty .
 \end{equation}
 Therefore the dual operator
-\[\iota^\prime\colon L^\infty(\mu)^\prime \to L^0_b(\mathcal A)^\prime \cong ba(\mathcal A)\]
+\[\iota^\ast\colon L^\infty(\mu)^\ast \to L^0_b(\mathcal A)^\ast \cong ba(\mathcal A)\]
 is injective and because of \eqref{e3} it is isometric since it implies \(\iota(B_1) = B_1\) where \(B_1\) denotes the unit ball in the respective spaces. %Indeed we have
 %\[\left\lvert \iota^\prime F(f) \right\rvert = \left\lvert F[f]_\mu \right\rvert \le \left\lVert F \right\rVert_{L^\infty(\mu)^\prime} \cdot \left\lVert [f]_\mu \right\rVert_{L^\infty(\mu)} \le \left\lVert F \right\rVert_{L^\infty(\mu)^\prime}\cdot\left\lVert f \right\rVert_\infty\]
 %and with Hahn Banach we get
 %\[\left\lVert F \right\rVert_{L^\infty(\mu)^\prime} = F[f]_{\mu} = \lim \iota^\prime Fg_n\]
 %with \((g_n)\subseteq [f]_\mu\) with \(\left\lVert g_n \right\rVert\to 1\).
 Further the closed range theorem implies
-\[\operatorname{ran}(\iota^\prime) = \operatorname{ker}(\iota)^\perp = \left\{ F\in L^0_b(\mathcal A)^\prime\mid F(f) = 0 \text{ for all } %f \text{ s.t. }
+\[\operatorname{ran}(\iota^\ast) = \operatorname{ker}(\iota)^\perp = \left\{ F\in L^0_b(\mathcal A)^\ast\mid F(f) = 0 \text{ for all } %f \text{ s.t. }
  f = 0 \text{ \(\mu\) a.e.}\right\} \cong ba(\mu).\]
 \end{proof}
 
@@ -337,7 +337,7 @@ Further the closed range theorem implies
 A similar approach can be used to characterise the dual spaces of other normed spaces of bounded measurable functions, for example the dual of all bounded continuous functions \(\mathcal C_b(X)\) if we are dealing with a topological space \(X\). If we denote the Borel algebra by \(\mathcal B\) we get
 \[\iota\colon\mathcal C_b(X) \hookrightarrow L^0_b(\mathcal B) \]
 isometrically and therefore 
-\[\iota^\ast\colon ba(\mathcal B) \cong L^0_b(\mathcal B)^\ast \to\!\!\!\!\!\to \mathcal C_b(X)^\prime, \quad \mu\mapsto \big( f\mapsto \mu(f)\big)\]
+\[\iota^\ast\colon ba(\mathcal B) \cong L^0_b(\mathcal B)^\ast \to\!\!\!\!\!\to \mathcal C_b(X)^\ast, \quad \mu\mapsto \big( f\mapsto \mu(f)\big)\]
 is surjective, but not necessarily isometric and not injective if \(\mathcal C_b(X)\subsetneq L^0_b(\mathcal B)\). Of course one could argue that we then have \(\mathcal C_b(X)^\ast\cong ba(\mathcal B)/\operatorname{ker}(\iota^\ast)\) but that characterisation is very implicit.
  However one can characterise that quotient space is some cases -- usually under certain regularity condition on the space -- as a 
  %show in some cases -- if the topological space \(X\) is regular enough -- that the restriction of \(\iota^\prime\) to 
