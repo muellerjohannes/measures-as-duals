@@ -28,7 +28,7 @@ by \(ba(\mathcal A)\) and the space of bounded and countably additive measures b
 \end{defi}
 
 \begin{theo}[Hahn-Jordan decomposition]
-For every signed measure \(\mu\in ba(\mathcal A)\) there are two positive measures \(\mu_+, \mu_-\in ba(\mathcal A)\) such that \(\mu = \mu_+-\mu_-\). Further \(\mu\) is countably additive if and only if \(\mu_+\) and \(\mu_-\) are countably additive.
+For every signed measure \(\mu\in ba(\mathcal A)\) there are two positive measures \(\mu_+, \mu_-\in ba(\mathcal A)\) such that \(\mu = \mu_+-\mu_-\). If \(\mu\) is countably additive then  \(\mu_+\) and \(\mu_-\) can be chosen to be countably additive as well.
 \end{theo}
 \begin{proof}
 For \(A\in\mathcal A\) set
@@ -50,7 +50,8 @@ It is clear that \(\mu_+\) is positive as we have \(\mu_+(A)\ge \mu(\varnothing)
 %and as this holds for all \(\varepsilon>0\) we attain the other inequality.
 If we choose \(\mu_-\coloneqq \mu_+-\mu\) we get the desired decomposition. Note that \(\mu_-\) is positive since we have \(\mu\le \mu_+\) via definition.
 
-It is obvious that if \(\mu_+\) and \(\mu_-\) are countably additive so is \(\mu\). Let on the other hand \(\mu\) be countably additive then it suffices to show that \(\mu_+\) is countably additive so let \((A_n)\subseteq\mathcal A\) be a sequence of disjoint sets. Choose now \(N\) so large that
+%It is obvious that if \(\mu_+\) and \(\mu_-\) are countably additive so is \(\mu\). 
+Let now \(\mu\) be countably additive then it suffices to show that \(\mu_+\) is countably additive so let \((A_n)\subseteq\mathcal A\) be a sequence of disjoint sets. Choose now \(N\) so large that
 \[\sum_{i = N+1}^\infty \mu_+(A_i) < \varepsilon. \]
 To see that such \(N\) exists, take sequences \((B^{i}_n)_n\subseteq \mathcal A\) such that \(B_n^{i}\subseteq A_i\) and \(0\le\mu(B^{i}_n)\nearrow \mu_+(A_i)\). We get now %Note that such an \(N\) exists since we have
 \[\left\lVert \mu \right\rVert_{BV} \ge \sum\limits_{i=1}^\infty \mu(B^{i}_n) \nearrow \sum\limits_{i=1}^\infty \mu_+(A_i) \quad \text{for }n\to\infty\]
@@ -401,7 +402,7 @@ Let \(X\) be a topological space and let \(\mathcal P(\mathcal A)\) be the set o
 \end{cor}
 
 \begin{cor}[Metrisability of the weak topology]
-Let \(X\) be a metric space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures.
+Let \(X\) be a separable and complete metric space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures.
 %be a topological space and let \(\mathcal P(\mathcal A)\) be the set of Borel probability measures. Then the following statements hold.
 %\begin{enumerate}
 %\item If the weak topology is metrisable, then the space \(X\) is compact.
@@ -418,7 +419,7 @@ The assumption of the previous Corollary can be weakened. For example it is enou
 \section*{Conclusion}
 We have seen that the Hahn-Jordan decomposition also holds for only finitely additive signed measures. To the authors knowledge there is no reference so far for this in the literature. Further we developed a duality between a function space and the Banach space of signed measures and proved that countable additivity is equivalent to the dominated or monotone convergence theorem. This duality provides an extremely short and self contained introduction to signed measures that avoids the mostly tedious calculation that are usually involved in the proof of the norm property of the total variation and the completeness of the space of signed measures. 
 
-In the last section it was shown that the set of probability measures is compact with respect to the weak topology. Further the motivating question was answered, namely it was the goal to investigate whether the Prokhorov metric metrises the weak topology like frequently stated or only the weak convergence (c.f. \cite{billingsley2013convergence}).% but frequently stated that it would metrise the weak topology itself.
+In the last section it was shown that the set of probability measures is compact with respect to the weak topology. Further the motivating question was answered, namely it was the goal to investigate whether the Prokhorov metric metrises the weak topology like frequently stated or only the weak convergence (c.f. \cite{billingsley2013convergence}). % but frequently stated that it would metrise the weak topology itself.
 % the question that was the motivation of this work was answered. Namely we wanted  It is well known that the Prokhorov metric metrises the weak convergence (c.f. \cite{billingsley2013convergence}) but frequently stated that it would metrise the weak topology itself.
 % This implies that the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact. This answers the question which %was the motivation of the presented work whether the weak topology or only the weak convergence is metrised by the Prokhorov metric (c.f. \cite{billingsley2013convergence}).
 In fact the weak topology of probability measures over a complete and separable metric space is metrisable if and only the space is compact and thus only the weak convergence is metrised. However this is no contradiction but shows that the weak topology has no countable neighborhood basis and is therefore not uniquely specified by its notion of convergence (c.f. \cite{muller2018topology}).
