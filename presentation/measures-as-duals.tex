@@ -1,0 +1,169 @@
+\documentclass{beamer}
+\usepackage[english]{babel}
+\usepackage[applemac]{inputenc}
+\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{extarrows}
+\usepackage{enumitem}
+ 
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usefonttheme{serif}%structuresmallcapsserif}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsubsection]
+  \end{frame}
+}
+
+%Information to be included in the title page:
+\title{\textsc{Weak compactness of probability measures}}%Reconstructing the marginal kernel of discrete determinantal point processes}}
+\author{J. MŸller}
+\institute{University of Warwick}
+\date{\today}
+ 
+ \setenumerate[1]{label=({\itshape\roman*})}
+ \newcounter{ResumeEnumerate}
+ \newtheorem{proposition}[theorem]{Proposition}
+ %\newtheorem{corollary}[theorem]{Corollary}
+%\renewcommand{\labelenumi}{\textup{(\textit{\roman{enumi}})}}
+%\def\labelenumi{(\textit{\roman{enumi}})}
+ 
+\begin{document}
+%\def\labelenumi{(\textit{\roman{enumi}})}
+ 
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section{Motivation}
+
+\section{Building a framework}
+
+\begin{frame}
+\frametitle{Setting and definitions}
+Let \((X, \mathcal A)\) be a measurable space and let \(\mu\colon\mathcal A\to\mathbb R\). Then we say \(\mu\) is
+\begin{enumerate}
+\item \emph{finitely additive} if we have \[\mu\Big(\bigcup_{k=1}^N A_k\Big) = \sum\limits_{k=1}^N\mu(A_k)\] for all finite collection of measurable disjoint sets \(A_k\in\mathcal A\), \pause
+\item \emph{countably additive} if the above holds for countable collections of measurable disjoint sets, \pause
+\item of \emph{bounded variation} or shortly \emph{bounded} if we have
+\[\left\lVert \mu \right\rVert_{BV}\coloneqq \sup_{\mathcal E}\sum\limits_{E\in\mathcal E} \left\lvert \mu(E) \right\rvert<\infty \]
+where \(\mathcal E\) is any %going through %the supremum is taken over 
+%all 
+finite families of disjoint measurable sets, \pause
+\item \emph{positive} if \(\mu(\mathcal A)\subseteq\mathbb R_+\). \pause
+\end{enumerate}
+Denote the space of bounded and finitely additive measures %with bounded variation 
+by \(ba(\mathcal A)\) and the space of bounded and countably additive measures by \(ca(\mathcal A)\). %The quantity \(\left\lVert \mu \right\rVert_{BV}\) is called the norm of \emph{total variation} of \(\mu\) and Theorem \ref{charact} shows that it is indeed a norm and that both \(ba(\mathcal A)\) and \(ca(\mathcal A)\) are complete wrt to it.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Hahn-Jordan decomposition}
+\begin{theorem}[Hahn-Jordan decomposition]
+For every signed measure \(\mu\in ba(\mathcal A)\) there are two positive measures \(\mu_+, \mu_-\in ba(\mathcal A)\) such that \(\mu = \mu_+-\mu_-\). If \(\mu\) is countably additive then  \(\mu_+\) and \(\mu_-\) can be chosen to be countably additive as well.
+\end{theorem}\pause
+\begin{proof}
+\begin{enumerate}
+\item For \(A\in\mathcal A\) set
+\(\mu_+(A)\coloneqq \sup\left\{ \mu(B)\mid B\in\mathcal A, B\subseteq A\right\}.\) \pause
+\item It is clear that \(\mu_+\) is positive as we have \(\mu_+(A)\ge \mu(\varnothing)=0\) and it can easily be checked that it is finitely additive. \pause
+\item Choose now \(\mu_-\coloneqq \mu_+-\mu\) to obtain the desired decomposition. \pause
+\item Use dominated convergence to show that \(\mu_+\) is countably additive if \(\mu\) is.
+\end{enumerate}
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Integration with respect to a signed measure}
+\begin{theorem}[Integral]
+For every signed measure \(\mu\in ba(\mathcal A)\) there is a unique linear and continuous mapping
+\[\int\mathrm d\mu\colon L^0_b(\mathcal A)\to R\]
+called the \emph{integral wrt to \(\mu\)} such that we have 
+\[\int\limits \sum\limits_{k=1}^N \alpha_i\chi_{A_i} \mathrm{d}\mu \coloneqq \sum\limits_{k=1}^N \alpha_i \mu(A_i) \]
+for all simple functions. Further we have
+\[\left\lVert \int\mathrm d\mu \right\rVert_{L^0_b(\mathcal A)^\prime} \le \left\lVert \mu \right\rVert_{BV}.\]
+\end{theorem}
+\end{frame}
+
+\section{Measures as dual spaces}
+
+\begin{frame}
+\frametitle{Characterisation of measures as a dual space}
+\begin{theorem}[Measures as duals]
+With the above notations the linear mapping
+\begin{equation*}
+I\colon ba(\mathcal A) \to L^0_b(\mathcal A)^\ast, \quad \mu\mapsto I\mu \coloneqq%F_\mu\coloneqq
+ \left(f\mapsto\int f\mathrm{d}\mu\right)
+\end{equation*}
+is an algebraic isomorphism and we have \(\left\lVert I\mu \right\rVert_{L^0_b(\mathcal A)^\ast} = \left\lVert \mu \right\rVert_{BV}\). %In particular \(\left\lVert \cdot \right\rVert_{BV}\) is a norm and \(ba(\mathcal A)\) is complete with respect to it.
+%isometric isomorphism.
+ Further the inverse \(I^{-1}\) is given by
+\[F\mapsto \Big( A\mapsto F(\chi_A)\Big).\]
+For a measure \(\mu\in ba(\mathcal A)\) the following three statements are equivalent:
+%is countably additive if and only if one of the two following equivalent properties holds:
+\begin{enumerate}
+\item \(\mu\) is countably additive.
+\item \(I\mu\) fulfills the monotone convergence theorem.
+\item \(I\mu\) fulfills the dominated convergence theorem.
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Consequences}
+\begin{corollary}
+The quantity \(\left\lVert \cdot \right\rVert_{BV}\) is a norm and \(ba(\mathcal A)\) is complete with respect to it. The space of countably additive signed measures is a Banach space with respect to the norm of total variation.
+\end{corollary}\pause
+\begin{proof}
+\begin{enumerate}
+\item The first statement is an immediate consequence of the previous theorem. \pause
+\item For the second one, show that strong limits of countably additive signed measures satisfy the dominated convergence theorem.
+\end{enumerate}
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Characterisation of \(L^\infty(\mu)^\ast\) and further duals}
+\begin{theorem}[Dual of \(L^\infty(\mu)^\ast\)]
+Let \(\mu\in ba(\mathcal A)\) and let \( ba(\mu)\subseteq ba(\mathcal A)\) be the subspace of measure that are absolutely continuous wrt \(\mu\). Then we have 
+\[ ba(\mu) \cong L^\infty(\mu)^\ast \]
+isometrically in the canonical way.
+\end{theorem} \pause
+\begin{proof}
+Use the surjection
+\[\iota:L^0_b(\mathcal A) \to L^\infty(\mu), \quad f\mapsto[f]_\mu\]
+and the property \(\iota(B_1) = B_1\). 
+\end{proof}
+\end{frame}
+
+\section{Weak topologies on the space of probability measures}
+
+\begin{frame}
+\frametitle{}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+
+\end{frame}
+
+\end{document}
+
